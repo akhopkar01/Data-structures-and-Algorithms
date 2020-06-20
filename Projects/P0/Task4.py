@@ -25,19 +25,21 @@ Print a message:
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
 
-caller_directory={}
-text_directory={}
+callers = set()
+callees = set()
+texters = set()
+textees = set()
 
 for caller, callee, _, _ in calls:
-    caller_directory[caller] = callee
+    callers.add(caller)
+    callees.add(callee)
+
 for texter, textee, _ in texts:
-    text_directory[texter] = textee
-
-maybe_telemarketer=set()
-for key in caller_directory:
-    if key not in caller_directory.values():
-        if key not in text_directory.keys() and key not in text_directory.values():
-            maybe_telemarketer.add(key)
+    texters.add(texter)
+    textees.add(textee)
 
 
-print("These numbers could be telemarketers: \n{}".format('\n'.join(maybe_telemarketer)))
+telemarketers = callers - callees - texters - textees
+
+potential_telemarketers = sorted(telemarketers)
+print("These numbers could be telemarketers: \n{}".format('\n'.join(potential_telemarketers)))

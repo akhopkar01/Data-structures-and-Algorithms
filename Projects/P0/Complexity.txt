@@ -1,0 +1,28 @@
+Task 0:
+In this task, the records were just accessed by indexing and thus,
+The Worst-case time complexity: O(1)
+
+Task 1:
+To get unique numbers, the records are iterated in the log file to account for caller and callee numbers.
+These numbers are stored in a set which keeps unique entries at all times i.e., no duplicates. Thus, for this implementation:
+The worst-case time complexity: O(n), where n is the size of the log file
+
+Task 2:
+To find the number who spent the longest time on phone, a dictionary was maintained initialized to 0.
+The values of this dictionary was updated by iterating through the log, the max was found by using a built-in python function having time complexity O(n).
+The worst-case time complexity: O(n+k), where n is the size of the log file and k is the length of dictionary.
+
+Task 3:
+This task had two parts:
+Task 3.A - To find all the codes of fixed line numbers in Bangalore.
+In this implementation, The unique numbers were first added in a set and then were iterated through to find their codes.
+The worst-case time complexity : O(n+k), where n is the size of the log file and k is the length of the set constructed.
+Task 3.b - To find the percentage of calls made by (080) to (080). A counter was updated everytime the apprpriate condition was met by iterating through the log file.
+The worst-case time complexity: O(n)
+
+Task 4:
+In this task to find the potential telemarketers, a set of callers, callees, texters, textees was maintained by iterating through the log files.
+The set was subtracted i.e., all the common elements from callers in callees, texters and textees were eliminated giving a set of numbers who were only
+callers.
+Worst case time complexity: O(n), where n is the size of log file (both calls and texts)
+ 

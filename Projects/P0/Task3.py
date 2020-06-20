@@ -88,6 +88,7 @@ def fixed_line_percentage(log):
 if __name__ == "__main__":
     print("################## 3A ###################")
     codes = unique_codes(calls)
+    codes = sorted(codes)
     print("The numbers called by people in Bangalore have codes: \n{}".format('\n'.join(codes)))
 
     print("################## 3B ####################")
