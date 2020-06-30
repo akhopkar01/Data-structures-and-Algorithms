@@ -5,8 +5,8 @@ This Repository consists of all the exercises in Data Structures and Algorithm U
 These exercise form the in-session practice questions of the course. You can find the source code for the exercises in /Exercises.
 To get the files on local system:
 ```
-git clone https://github.com/akhopkar01/fun-with-Data-Structures-and-Algorithm.git
-cd ~/fun-with-Data-Structures-and-Algorithm/Exercises/pythonRefresher
+git clone https://github.com/akhopkar01/Data-structures-and-Algorithm.git
+cd ~/Data-structures-and-Algorithm/Exercises/pythonRefresher
 ls
 ```
 To execute the files:
@@ -26,3 +26,8 @@ Under this section, The test cases for each problem statement is explicitly ment
 - Problem 3: Birthday tracking System using OOP
   - Given a list of people with their ages and corresponding birthday months, return a dictionary of all the people who have their birthdays in april with their names as the key and their incremented age to show how old they turn as the value.
   - Find out the most common month people have their birthdays in. 
+
+### Data Structures
+This section includes data structures such as Arrays & Linked Lists, Stacks and Queues, Hash Maps etc. and can be accessed ```cd ~/Data-structures-and-Algorithms/Data-Structures/```
+#### Arrays and Linked List
+This section includes how to create a linked list and doubly linked list and perform some basic operations such as Insert, Append, Remove, Search, pop etc. The file SinglyLinkedList.py can be imported to get the operations of linked list in your program. The files can be accessed in the folder /Arrays&LinkedLists
