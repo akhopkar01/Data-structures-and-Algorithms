@@ -1,3 +1,6 @@
+import collections
+import sys
+
 class Node:
     def __init__(self, element=None, priority=None):
         self.element = element
@@ -133,32 +136,42 @@ class Huffman:
     def _encoding_table_(self):
         # Perform in-order DFS
         root = self.root
-        visit_order = []
         base_code = ''
+        visit_order = []
 
         def traverse(base_code, node):
             if node:
-                current_code = base_code+str(node.bin)
-                traverse(current_code, node.left)
+                if node.freq == -1:
+                    current_code = ''
+                else:
+                    current_code = base_code+str(node.bin)
+
                 if node.element:
                     visit_order.append( (node.element, current_code, node.freq) )
-
-                traverse(current_code, node.right)
+                if node.left:
+                    traverse(current_code, node.left)
+                if node.right:
+                    traverse(current_code, node.right)
         traverse(base_code, root)
         return visit_order
 
 
 
+if __name__ == "__main__":
 
+    string1 = "AAAAAABBBBBCCCCDDDEE"
+    string2 = "the bird is the word"
 
-string = "AAAAAABBBBBCCCCDDDEE"
+    huff1 = Huffman(string1)
+    order = huff1._encoding_table_()
+    print(order)
 
-# q = SimplePriorityQueue(string)
-#
-# tree = BinaryTree(string)
-# print(tree)
-huff = Huffman(string)
-order = huff._encoding_table_()
-print(order)
-code = huff.encode()
-print(code)
+    code = huff1.encode()
+    print(code)
+
+    huff2 = Huffman(string2)
+    order2 = huff2._encoding_table_()
+    print(order2)
+
+    code2 = huff2.encode()
+    print(code2)
