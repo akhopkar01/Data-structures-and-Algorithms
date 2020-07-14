@@ -3,6 +3,11 @@ import sys
 
 class Node:
     def __init__(self, element=None, priority=None):
+        """
+        Creating a node class containing the character information - frequency, left and right child and binary code
+        :param element: character
+        :param priority: frequency of the character
+        """
         self.element = element
         self.freq = priority
         self.left = None
@@ -14,25 +19,34 @@ class Node:
 
 class SimplePriorityQueue:
     def __init__(self, string):
+        """
+        Creating a simple priority queue for the string character
+        :param string: input str message
+        """
         self.priority = []
+
+        # Creating the queue based on the characters and their number of occurrences (frequency).
         counts = {}
         for char in string:
             if char in counts:
                 counts[char]+=1
             else:
                 counts[char]=1
+
         for char in counts:
             frequency = counts[char]
             self.priority.append(Node(char, frequency))
         self.sort()
 
     def sort(self):
+        # Sorting the queue based on their frequencies
         self.priority = sorted(self.priority, key= lambda x: x.freq, reverse=True)
 
     def pop(self):
         return self.priority.pop()
 
     def _insert_(self, node):
+        #Internal function to insert the node and sort the queue
         self.priority.append(node)
         self.sort()
 
@@ -53,7 +67,12 @@ class SimplePriorityQueue:
 
 class BinaryTree:
     def __init__(self, string):
+        """
+        Binary Tree class to initialize a root and create a binary tree
+        :param string: str -> msg
+        """
         q = SimplePriorityQueue(string)
+        # Merge till the queue length is 1
         while len(q.priority) > 1:
             q.merge()
         self.root = q.priority[0]
@@ -64,6 +83,7 @@ class BinaryTree:
         self.root.bin = 0
 
     def _binarize_(self, node):
+        # Binarizing the nodes - setting node.bin 0/1
         if node.left is None and node.right is None:
             return node
 
@@ -115,6 +135,10 @@ class BinaryTree:
 
 class Huffman:
     def __init__(self, string):
+        """
+        Huffman Code class to create encoder and decoder
+        :param string: str -> msg
+        """
         tree = BinaryTree(string)
         tree.create_Btree()
         self.root = tree.root
@@ -124,9 +148,12 @@ class Huffman:
         self.msg = string
 
     def encode(self):
+        # Based on the encoding table, update the encoding dictionary
         code = ''
         for elements in self.table:
             self.encode_dict[elements[0]] = elements[1]
+
+        # Iterate through the dictionary, to fetch the code corresponding to the characters
         for char in self.msg:
             code+=str(self.encode_dict[char])
         return code
@@ -134,7 +161,7 @@ class Huffman:
 
 
     def _encoding_table_(self):
-        # Perform in-order DFS
+        # Perform DFS recursively
         root = self.root
         base_code = ''
         visit_order = []
