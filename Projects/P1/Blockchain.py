@@ -2,12 +2,12 @@ import hashlib
 import time
 
 class Block(object):
-    def __init__(self, data, previous_hash=None, prev_block = None):
+    def __init__(self, data, previous_hash=None):
         self.timestamp = time.asctime(time.gmtime(time.time()))
         self.data = data
         self.previous_hash = previous_hash
         self.hash = self.calc_hash()
-        self.prev_block = prev_block
+        self.next = None
 
     def calc_hash(self):
         sha = hashlib.sha256()
@@ -33,7 +33,8 @@ class Blockchain:
             self.tail = self.head
 
         else:
-            self.tail = Block(data, self.tail.hash, self.tail)
+            self.tail.next = Block(data, self.tail.hash)
+            self.tail = self.tail.next
 
 
 
@@ -44,27 +45,27 @@ class Blockchain:
         :return:
         """
 
-        current = self.tail
+        current = self.head
         while current:
             if current.data == data:
                 return current
-            current = current.prev_block
+            current = current.next
         return "Not Found !"
 
     def size(self):
-        current = self.tail
+        current = self.head
         size = 0
         while current:
-            current = current.prev_block
+            current = current.next
             size+=1
         return size
 
     def __repr__(self):
         s = "______________________ \n"
-        current = self.tail
+        current = self.head
         while current:
             s+="{} \n ______________________ \n".format(current)
-            current = current.prev_block
+            current = current.next
 
         return s
 
