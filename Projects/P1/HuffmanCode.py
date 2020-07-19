@@ -1,4 +1,3 @@
-import collections
 import sys
 
 class Node:
@@ -60,8 +59,13 @@ class SimplePriorityQueue:
         node2 = self.pop()
 
         new_frequency = node1.freq + node2.freq
-        new_node.left = node1 if min(node1.freq, node2.freq) == node1.freq else node2
-        new_node.right = node1 if max(node1.freq, node2.freq) == node1.freq else node2
+
+        if node1.freq <= node2.freq:
+            new_node.left = node1
+            new_node.right = node2
+        else:
+            new_node.left = node2
+            new_node.right = node1
         new_node.freq = new_frequency
         self._insert_(new_node)
 
@@ -158,7 +162,13 @@ class Huffman:
             code+=str(self.encode_dict[char])
         return code
 
+    def decode(self):
+        decode = ''
 
+        for elements in self.table:
+            self.decode_dict[elements[1]] = elements[0]
+
+        return self.decode_dict
 
     def _encoding_table_(self):
         # Perform DFS recursively
@@ -183,22 +193,40 @@ class Huffman:
         return visit_order
 
 
+def huffman_encoding(string):
+    huff = Huffman(string)
+    return huff.encode(), huff
+
+def huffman_decoding(msg, huff):
+    decode_dict = huff.decode()
+    decode_txt = ''
+
+    while len(msg) > 0:
+        idx = 1
+        while True:
+            if msg[:idx] in decode_dict:
+                decode_txt+=decode_dict[msg[:idx]]
+                msg = msg[idx:]
+                break
+            idx+=1
+    return decode_txt
+
+
+    
+
 
 if __name__ == "__main__":
+    a_great_sentence = "The bird is the word"
 
-    string1 = "AAAAAABBBBBCCCCDDDEE"
-    string2 = "the bird is the word"
+    print("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+    print("The content of the data is: {}\n".format(a_great_sentence))
 
-    huff1 = Huffman(string1)
-    order = huff1._encoding_table_()
-    print(order)
+    encoded_data, tree = huffman_encoding(a_great_sentence)
 
-    code = huff1.encode()
-    print(code)
+    print("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+    print("The content of the encoded data is: {}\n".format(encoded_data))
 
-    huff2 = Huffman(string2)
-    order2 = huff2._encoding_table_()
-    print(order2)
+    decoded_data = huffman_decoding(encoded_data, tree)
 
-    code2 = huff2.encode()
-    print(code2)
+    print("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+    print("The content of the encoded data is: {}\n".format(decoded_data))
