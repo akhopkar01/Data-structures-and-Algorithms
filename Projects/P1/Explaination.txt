@@ -1,0 +1,33 @@
+### Project explainations
+
+Problem 1 - LRU Cache Problem
+The problem was solved using a linked-list which acted as a queue FIFO. For every get operation, the order of keys was adjusted,
+ensuring the least used key to be at first position of the queue. The key is popped when the capacity increases, a dictionary is used
+to map the key with its corresponding value. The get, put and delete option would be O(1). For access keys through the linked list,
+the worst case time complexity is O(n).
+
+Problem 2 - File Recursion
+Recursion was used to explore all the folders and files to get the relevant files. The time complexity of the program depends on the
+number of folders and sub-folders it consists. Say, there are n folders and each folder has about m sub-folders, the time complexity in such
+a case would be O(n*m).
+
+Problem 3 - Huffman Code
+The program utilized the following classes:
+1. Node
+2. SimplePriorityQueue
+3. BinaryTree
+4. Huffman
+
+Since the program has to do with tree traversals, the tree traversal time complexity alone leads to O(n), Using SimplePriorityQueue, and using
+an in-built function which takes O(log(n)) time, the total time complexity of the program ends up to be O(nlog(n)).
+
+Problem 4 - Active Dictionary
+The program is similar to Problem 2 in the sense that it utilizes recursion in order to find the user in the user group.
+The time complexity is thus O(n*m) where, n is the number of groups and m is the number of users in each group.
+
+Problem 5 - Blockchain
+A practical implementation of a linked list which utilizes functions such as : append [O(1)], search [O(n)], size [O(n)]
+
+Problem 6 - Union and Intersection
+Linked list is converted to lists and sets to accomodate for the union and intersection operation. In worst case scenario,
+the time complexity is O(n) for each methods.
