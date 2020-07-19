@@ -81,7 +81,6 @@ if __name__ == "__main__":
     bchain.append("Third Block")
 
     print(bchain)
-    print(bchain.size())
-    #
+    print(bchain.size()) #3
     block = bchain.search("Second Block")
-    print(block)
+    print(block) #block 2

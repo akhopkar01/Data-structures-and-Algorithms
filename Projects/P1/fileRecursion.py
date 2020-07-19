@@ -17,15 +17,20 @@ def find_files(path, suffix):
             files.append(path+"/"+elements)
         elif "." not in elements:
             folders.append(elements)
-    # print(folders)
+
     for folder in folders:
         new_files = find_files(path+"/"+folder, suffix)
         if new_files:
             files.append(new_files[0])
+    if len(files) == 0:
+        return None
     return files
 
-print(find_files(suffix='c', path=path_base))
+if __name__ == "__main__":
+    print(find_files(suffix='c', path=path_base)) #./testdir/subdir1/a.c, ./testdir/t1.c, ./testdir/subdir3/subsubdir1/b.c,
 
-# print(find_files(suffix='h', path=path_base))
-#
-# print(find_files(suffix='gitkeep', path=path_base))
+    print(find_files(suffix='h', path=path_base)) #./testdir/subdir1/a.h, ./testdir/t1.h, ./testdir/subdir3/subsubdir1/b.h
+
+    print(find_files(suffix='gitkeep', path=path_base)) #./testdir/subdir2/.gitkeep, ./testdir/subdir4/.gitkeep
+
+    print(find_files(suffix="a", path=path_base)) #None

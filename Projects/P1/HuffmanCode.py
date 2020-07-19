@@ -223,10 +223,11 @@ if __name__ == "__main__":
 
     encoded_data, tree = huffman_encoding(a_great_sentence)
 
-    print("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+    print("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2)))) #36
     print("The content of the encoded data is: {}\n".format(encoded_data))
+    #000010011001110010000110100010100010001010000000000100000101100111001000110000111010100010
 
     decoded_data = huffman_decoding(encoded_data, tree)
 
-    print("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
-    print("The content of the encoded data is: {}\n".format(decoded_data))
+    print("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data))) #69
+    print("The content of the encoded data is: {}\n".format(decoded_data)) #The bird is the word

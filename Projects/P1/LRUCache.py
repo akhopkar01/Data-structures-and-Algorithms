@@ -135,11 +135,11 @@ if __name__ == "__main__":
     cache.set(3,3)
     cache.set(4,4)
 
-    print(cache.get(1))
-    print(cache.get(2))
-    print(cache.get(9))
+    print(cache.get(1)) #1
+    print(cache.get(2)) #2
+    print(cache.get(9)) #-1
 
     cache.set(5, 5)
     cache.set(5,5)
 
-    print(cache.get(3))
+    print(cache.get(3)) #-1
