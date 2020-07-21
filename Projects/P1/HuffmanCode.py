@@ -26,16 +26,19 @@ class SimplePriorityQueue:
 
         # Creating the queue based on the characters and their number of occurrences (frequency).
         counts = {}
-        for char in string:
-            if char in counts:
-                counts[char]+=1
-            else:
-                counts[char]=1
+        if len(string) is not 0:
+            for char in string:
+                if char in counts:
+                    counts[char]+=1
+                else:
+                    counts[char]=1
 
-        for char in counts:
-            frequency = counts[char]
-            self.priority.append(Node(char, frequency))
-        self.sort()
+            for char in counts:
+                frequency = counts[char]
+                self.priority.append(Node(char, frequency))
+            self.sort()
+        else:
+            self.priority = []
 
     def sort(self):
         # Sorting the queue based on their frequencies
@@ -79,12 +82,16 @@ class BinaryTree:
         # Merge till the queue length is 1
         while len(q.priority) > 1:
             q.merge()
-        self.root = q.priority[0]
+        if len(q.priority) > 0:
+            self.root = q.priority[0]
+        else:
+            self.root = None
 
     def create_Btree(self):
         node = self.root
-        self.root = self._binarize_(node)
-        self.root.bin = 0
+        if node is not None:
+            self.root = self._binarize_(node)
+            self.root.bin = 0
 
     def _binarize_(self, node):
         # Binarizing the nodes - setting node.bin 0/1
@@ -194,6 +201,9 @@ class Huffman:
 
 
 def huffman_encoding(string):
+    # if len(string) == 0:
+    #     return None,
+
     huff = Huffman(string)
     return huff.encode(), huff
 
@@ -231,3 +241,21 @@ if __name__ == "__main__":
 
     print("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data))) #69
     print("The content of the encoded data is: {}\n".format(decoded_data)) #The bird is the word
+
+    encoded_data, tree = huffman_encoding('')
+    print("The content of the encoded data is: {}\n".format(encoded_data)) #
+
+    decoded_data = huffman_decoding(encoded_data, tree)
+
+    print("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))  # 49
+    print("The content of the encoded data is: {}\n".format(decoded_data))  #
+
+    encoded_data, tree = huffman_encoding('aaaaaaaaa')
+    print("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))  # 24
+    print("The content of the encoded data is: {}\n".format(encoded_data))
+    # 000000000
+
+    decoded_data = huffman_decoding(encoded_data, tree)
+
+    print("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))  # 58
+    print("The content of the encoded data is: {}\n".format(decoded_data))  # aaaaaaaaa

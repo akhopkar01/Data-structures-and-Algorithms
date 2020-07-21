@@ -4,12 +4,16 @@ Problem 1 - LRU Cache Problem
 The problem was solved using a linked-list which acted as a queue FIFO. For every get operation, the order of keys was adjusted,
 ensuring the least used key to be at first position of the queue. The key is popped when the capacity increases, a dictionary is used
 to map the key with its corresponding value. The get, put and delete option would be O(1). For access keys through the linked list,
-the worst case time complexity is O(n).
+the worst case time complexity is O(n), where n is the capacity of the cache.
+
+For space complexity, it depends on the capacity of the LRU cache, since two data structures are used, 
+the space complexity is O(2n) which indeed is O(n)
 
 Problem 2 - File Recursion
 Recursion was used to explore all the folders and files to get the relevant files. The time complexity of the program depends on the
-number of folders and sub-folders it consists. Say, there are n folders and each folder has about m sub-folders, the time complexity in such
-a case would be O(n*m).
+number of files in the folders. Since, it follows DFS tree traversal, the time complexity is O(n)
+
+The space complexity depends on the size of the folders and the number of returns of the function : O(f)
 
 Problem 3 - Huffman Code
 The program utilized the following classes:
@@ -21,13 +25,19 @@ The program utilized the following classes:
 Since the program has to do with tree traversals, the tree traversal time complexity alone leads to O(n), Using SimplePriorityQueue, and using
 an in-built function which takes O(log(n)) time, the total time complexity of the program ends up to be O(nlog(n)).
 
+The space complexity depends on the length of the message and the size of the message - O(n)
+
 Problem 4 - Active Dictionary
 The program is similar to Problem 2 in the sense that it utilizes recursion in order to find the user in the user group.
-The time complexity is thus O(n*m) where, n is the number of groups and m is the number of users in each group.
+The time complexity is thus O(n) where n is the number of users in the groups.
+
+The space complexity depends on the number of return calls of the function: O(1)
 
 Problem 5 - Blockchain
 A practical implementation of a linked list which utilizes functions such as : append [O(1)], search [O(n)], size [O(n)]
+space complexity = O(n)
 
 Problem 6 - Union and Intersection
 Linked list is converted to lists and sets to accomodate for the union and intersection operation. In worst case scenario,
-the time complexity is O(n) for each methods.
+the time complexity is O(n) for Union and O(n*n) for double loop in intersection method.
+Since, the linked list is converted to lists and sets, the space complexity is O(2n), approximates to O(n)

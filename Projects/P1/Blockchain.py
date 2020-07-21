@@ -72,15 +72,42 @@ class Blockchain:
 
 
 if __name__ == "__main__":
-    bchain = Blockchain()
+    bchain1 = Blockchain()
+    bchain2 = Blockchain()
+    bchain3 = Blockchain()
 
-    bchain.append("First Block")
+    data1 = ["First", "Second"]
+    data2 = ["US", "UK", "India", "Australia"]
+    data3 = ['4500', '600', '23000', '780000', '12000', '3000']
 
-    bchain.append("Second Block")
+    for element in data1:
+        bchain1.append(element)
 
-    bchain.append("Third Block")
+    for element in data2:
+        bchain2.append(element)
 
-    print(bchain)
-    print(bchain.size()) #3
-    block = bchain.search("Second Block")
-    print(block) #block 2
+    for element in data3:
+        bchain3.append(element)
+
+    print("Test case 1:")
+    print(bchain1)
+    print(bchain1.size()) #2
+    print(bchain1.search("Second"))
+    print(bchain1.search("third")) # Not Found !
+
+    print("Test case 2:")
+    print(bchain2)
+    print(bchain2.size())  # 4
+    print(bchain2.search("UK"))
+    print(bchain2.search("Spain")) # Not Found!
+
+    print("Test case 3:")
+    print(bchain3)
+    print(bchain3.size())  # 6
+    print(bchain3.search('780000'))
+    print(bchain3.search('1')) # Not found!
+
+    edge =  Blockchain()
+    edge.append('')
+    print("Edge case:")
+    print(edge)

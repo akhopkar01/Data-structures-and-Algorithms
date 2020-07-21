@@ -109,6 +109,10 @@ class LRUCache:
         del self.cache[LRkey]
 
     def set(self, key, value):
+        if self.capacity < 1:
+
+            return
+
         if self.cache_size() >= self.capacity:
             self._adjust_()
             self.cache[key] = value
@@ -143,3 +147,23 @@ if __name__ == "__main__":
     cache.set(5,5)
 
     print(cache.get(3)) #-1
+    print(cache.get(4)) # 4
+
+    cache.set(6, 6)
+
+    print(cache.get(1)) # -1
+
+    cache2 = LRUCache(0)
+    cache2.set(1,1)
+    cache2.set(2,2)
+    cache2.set(3,3)
+
+
+    print(cache2.get(1)) #-1
+    print(cache2.get(2)) #-1
+
+    cache3 = LRUCache(-1)
+    cache3.set(0, 0)
+    cache3.set(1, 3)
+
+    print(cache3.get(0)) #-1

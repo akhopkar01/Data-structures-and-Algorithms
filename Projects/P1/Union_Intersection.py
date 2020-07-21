@@ -53,6 +53,9 @@ def union(llist1, llist2):
     list1 = llist1.to_list()
     list2 = llist2.to_list()
 
+    if len(list1) == 0 and len(list2) == 0:
+        return None
+
     union_list = list(set(list1+list2))
 
     ulist = LinkedList()
@@ -77,6 +80,8 @@ def intersection(llist1, llist2):
     return intersection_llist
 
 if __name__ == "__main__":
+
+    ## test 1
     linked_list_1 = LinkedList()
     linked_list_2 = LinkedList()
 
@@ -92,6 +97,7 @@ if __name__ == "__main__":
     print(union(linked_list_1, linked_list_2)) #32 -> 65 -> 2 -> 35 -> 3 -> 4 -> 6 -> 1 -> 9 -> 11 -> 21 ->
     print(intersection(linked_list_1, linked_list_2)) #4 -> 6 -> 21 ->
 
+    ## test 2
     linked_list_3 = LinkedList()
     linked_list_4 = LinkedList()
 
@@ -106,3 +112,22 @@ if __name__ == "__main__":
 
     print(union(linked_list_3, linked_list_4)) #65 -> 2 -> 35 -> 3 -> 4 -> 6 -> 1 -> 7 -> 8 -> 9 -> 11 -> 21 -> 23 ->
     print(intersection(linked_list_3, linked_list_4)) #None
+
+    ## test 3
+    linked_list_5 = LinkedList()
+    linked_list_6 = LinkedList()
+
+    print(union(linked_list_5, linked_list_6)) # None
+    print(intersection(linked_list_5, linked_list_6)) # None
+
+    ## test 4
+    linked_list_7 = LinkedList()
+    linked_list_8 = LinkedList()
+
+    element_1 = [4, 6, 7, 8, 9 , 10, 2, 31]
+
+    for num in element_1:
+        linked_list_7.append(num)
+
+    print(union(linked_list_7, linked_list_8)) # 2 -> 4 -> 6 -> 7 -> 8 -> 9 -> 10 -> 31 ->
+    print(intersection(linked_list_7, linked_list_8)) # None
