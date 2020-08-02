@@ -33,5 +33,21 @@ def pair_sum(arr, target):
         else:
             back_idx -= 1
 
+def min_steps(target):
+    # Find the minimum number of steps taken to reach the target.
+
+    num_steps = 0
+
+    while target!=0:
+        if target % 2 == 0:
+            target = target /2
+
+        else:
+            target-=1
+        num_steps +=1
+    return num_steps
+
+
+
 arr = [1, 4, 2, 9, 8]
 print(pair_sum(arr, 3))
