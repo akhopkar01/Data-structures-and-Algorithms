@@ -1,0 +1,45 @@
+## Explaination
+
+PROBLEM 1:
+A variation of Binary Search. An imaginary array from 0 to n is considered (sorted consecutive numbers). A square power of middle value is used
+to compare the position with the given number.
+Time Complexity: O(log(n))
+Space Complexity: O(1)
+
+PROBLEM 2:
+A variation of Binary Search is used for this problem. Since a sorted array is rotated about a pivot point, the algorithm
+keeps track of the left side and right side of the array. It recursively searches for the element in both the parts and returns
+the index of maximum value.
+The Time Complexity of the algorithm is thus, O(log(n)).
+The space complexity of the algorithm is independent of the input and thus is O(1).
+
+PROBLEM 3:
+A variation of merge sort is used to solve this problem. Merge sort is used to sort the array in descending order i.e.,
+the highest number at index[0] and the smallest number at last index. Now, to get the maximum sum of two numbers from this sorted list
+if the numbers are placed alternatively, it will give the maximum sum.
+Time Complexity : O(nlog(n)), n is the input array size
+Space Complexity: O(1), since no new data-structure was used.
+
+PROBLEM 4:
+We keep track of two pointers, pointer for 0s and pointer for 2s. The problem is solved in single traversal.
+Time Complexity: O(n), n is the input array size.
+Space Complexity: O(1)
+
+PROBLEM 5:
+A trie data-structure is used to suggest auto-correct suggestions. The main functionality is the insert and search methods.
+For insert and search, each character of the word is inserted and subsequently, each character is retrieved. This thus,
+depends on the number of input words and the length of the word.
+Time Complexity: O(c*n), where c is the length of the word and n is the number of words. If c << n, Time complexity is rounded to O(n)
+Space Complexity: Worst space complexity is when there are words with no common characters, subsequently needing to store the characters in different leafs.
+The space complexity would thus be O(n), n is the input.
+
+PROBLEM 6:
+The problem of min max is solved in single traversal.
+Time Complexity: O(n), n is the length of the input array
+Space Complexity: O(1)
+
+PROBLEM 7:
+This problem uses trie as well. Follows similar complexity pattern as problem 5.
+Time Complexity: O(n)
+Space Complexity: O(n),
+where n is the length of the path to be searched/inserted.

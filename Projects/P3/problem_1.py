@@ -1,27 +1,32 @@
-def sqrt(n):
-    # Edge case 1
-    if n == 0:
-        return 0
 
-    # Edge case 2
+def sqrt(n):
+    if n == 0 or n == 1:
+        return n
+
     if n < 0:
         return None
 
-    # Iterative solution -  Complexity: O(sqrt(n))
-    for i in range(1, n+1):
-        if i == n//i:
-            return i
+    start = 0
+    end = n
+
+    while start <= end:
+        mid = (start+end) // 2
+        mid_sq = mid * mid
+
+        if mid_sq == n:
+            return mid
+
+        elif mid_sq < n:
+            start = mid+1
+            root = mid
+        else:
+            end = mid-1
+    return root
 
 
 if __name__ == "__main__":
-    print(sqrt(9))
-    print(sqrt(4))
-    print(sqrt(25))
-    print(sqrt(49))
-    print(sqrt(52))
-    print(sqrt(27))
-    print(sqrt(225))
-    print(sqrt(110))
-    print(sqrt(0))
-    print(sqrt(-25))
-    print(sqrt(1))
+    print("Pass" if (3 == sqrt(9)) else "Fail")
+    print("Pass" if (0 == sqrt(0)) else "Fail")
+    print("Pass" if (4 == sqrt(16)) else "Fail")
+    print("Pass" if (1 == sqrt(1)) else "Fail")
+    print("Pass" if (5 == sqrt(27)) else "Fail")

@@ -1,4 +1,7 @@
 def rotated_array_search(input_list, number):
+    if len(input_list) == 0:
+        return -1
+
     return recursive_search(input_list, number, 0, len(input_list)-1)
 
 def recursive_search(arr, target, start, end):
@@ -38,3 +41,6 @@ if __name__ == "__main__":
     test_function([[6, 7, 8, 1, 2, 3, 4], 8])
     test_function([[6, 7, 8, 1, 2, 3, 4], 1])
     test_function([[6, 7, 8, 1, 2, 3, 4], 10])
+    test_function([[], 1])
+    test_function([[5, 6, 7, 8, 1, 2], 2])
+    test_function([[5, 6, 7, 8, 1, 2], 7])
