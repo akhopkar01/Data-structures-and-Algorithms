@@ -1,4 +1,5 @@
 import random
+import math
 
 def get_min_max(ints):
     """
@@ -10,8 +11,8 @@ def get_min_max(ints):
     if len(ints) == 0:
         return None
 
-    min_num = float('inf')
-    max_num = -float('inf')
+    min_num = math.inf
+    max_num = -math.inf
     for num in ints:
         if num < min_num:
             min_num = num

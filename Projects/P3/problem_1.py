@@ -9,19 +9,21 @@ def sqrt(n):
     start = 0
     end = n
 
-    while start <= end:
-        mid = (start+end) // 2
-        mid_sq = mid * mid
+    return _find_root(n, start, end)
 
-        if mid_sq == n:
-            return mid
+def _find_root(n, start, end):
+    mid = (start+end) // 2
+    mid_sq = mid*mid
 
-        elif mid_sq < n:
-            start = mid+1
-            root = mid
-        else:
-            end = mid-1
-    return root
+    if mid_sq == n or abs(mid_sq-n) < 5:
+        return mid
+
+    elif mid_sq < n:
+        return _find_root(n, mid+1, end)
+
+    else:
+        return _find_root(n, start, mid-1)
+
 
 
 if __name__ == "__main__":
@@ -30,3 +32,4 @@ if __name__ == "__main__":
     print("Pass" if (4 == sqrt(16)) else "Fail")
     print("Pass" if (1 == sqrt(1)) else "Fail")
     print("Pass" if (5 == sqrt(27)) else "Fail")
+    print("Pass" if (7 == sqrt(53)) else "Fail")

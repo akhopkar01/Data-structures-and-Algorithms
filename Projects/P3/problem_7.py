@@ -37,8 +37,6 @@ class RouteTrieNode:
         # Insert the node as before
         if path not in self.children:
             self.children[path] = RouteTrieNode()
-        else:
-            pass
 
 class Router:
     def __init__(self, root_handler, not_found_handler):

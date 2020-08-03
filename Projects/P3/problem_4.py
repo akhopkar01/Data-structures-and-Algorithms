@@ -8,22 +8,21 @@ def sort_012(input_list):
     if len(input_list) < 1:
         return []
 
-    index_0 = 0
-    index_2 = len(input_list) - 1
+    low = 0
+    high = len(input_list)-1
+    mid = (low+high)//2
 
     idx = 0
-    while idx <= index_2:
+    while idx <= high:
         if input_list[idx] == 0:
-            input_list[idx] = input_list[index_0]
-            input_list[index_0] = 0
-            index_0 += 1
+            input_list[idx], input_list[low] = input_list[low], input_list[idx]
+            low += 1
             idx += 1
-        elif input_list[idx] == 2:
-            input_list[idx] = input_list[index_2]
-            input_list[index_2] = 2
-            index_2 -= 1
+        elif input_list[idx] == 1:
+            idx += 1
         else:
-            idx += 1
+            input_list[idx], input_list[high] = input_list[high], input_list[idx]
+            high -= 1
 
     return input_list
 
