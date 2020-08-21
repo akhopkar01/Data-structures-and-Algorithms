@@ -13,7 +13,6 @@
 SinglyLinkedList* create_linked_list(int*, int, bool);
 Stack* create_stack(int*, int);
 Queue* generate_queue(int*, int);
-std::string return_string();
 
 SinglyLinkedList* create_linked_list(int* arr, int n, bool disp = false) {
     SinglyLinkedList* head = new SinglyLinkedList;
@@ -43,15 +42,6 @@ Queue* generate_queue(int* arr, int n) {
     return queue;
 }
 
-
-std::string return_string() {
-    char arr[10]{ 'h','i',',','f','u','c','k',' ', 'y','o' };
-    std::string s ("String: \n");
-    for (int i = 0; i < 10; i++) {
-        s += arr[i];
-    }
-    return s;
-}
 
 int main()
 {   
