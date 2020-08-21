@@ -1,6 +1,7 @@
 #include "SinglyLinkedList.h"
 #include <iostream>
 
+
 void SinglyLinkedList::append(int data)
 {
     node* current = new node;
@@ -18,12 +19,16 @@ void SinglyLinkedList::append(int data)
 
 void SinglyLinkedList::display()
 {
+    
     node* current = new node;
     current = head;
+    std::cout << "Linked List: \n" << std::endl;  
     while (current != nullptr) {
         std::cout << current->data << "->";
         current = current->next;
     }
+    std::cout << "\n" << std::endl;
+
 }
 
 int SinglyLinkedList::access(int index)

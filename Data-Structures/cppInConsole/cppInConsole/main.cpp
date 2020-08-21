@@ -7,10 +7,13 @@
 #include "SinglyLinkedList.h"
 #include "Stack.h"
 #include "Queue.h"
+#include <string>
+
 
 SinglyLinkedList* create_linked_list(int*, int, bool);
 Stack* create_stack(int*, int);
 Queue* generate_queue(int*, int);
+std::string return_string();
 
 SinglyLinkedList* create_linked_list(int* arr, int n, bool disp = false) {
     SinglyLinkedList* head = new SinglyLinkedList;
@@ -40,6 +43,16 @@ Queue* generate_queue(int* arr, int n) {
     return queue;
 }
 
+
+std::string return_string() {
+    char arr[10]{ 'h','i',',','f','u','c','k',' ', 'y','o' };
+    std::string s ("String: \n");
+    for (int i = 0; i < 10; i++) {
+        s += arr[i];
+    }
+    return s;
+}
+
 int main()
 {   
 
@@ -47,31 +60,102 @@ int main()
 
     int arr[100]{};
     int n;
+    int choice;
+    int data{ 0 }, idx{0};
 
-    std::cout << "Enter the number of elements in your Data Structure ";
+    std::cout << "Enter the number of elements in your Data Structure: ";
     std::cin >> n;
-
-    std::cout << " Enter the data " << std::endl;
+    
+    std::cout << "Enter the data: ";
     for (int i = 0; i < n; i++) {
         std::cin >> arr[i];
     }
+    
+    std::cout << "Choose your data structure - (1) Linked List (2) Stack (3) Queue: ";
+    std::cin >> choice;
 
-   SinglyLinkedList* list_from_array = create_linked_list(arr, n);
-   list_from_array->insert_after(2, 10);
-   //list_from_array->display();
+// Improve this using Polymorphism later.
+    SinglyLinkedList* list_from_array = create_linked_list(arr, n);
+    Stack* stack = create_stack(arr, n);
+    Queue* queue = generate_queue(arr, n);
 
-   Stack* stack = create_stack(arr, n);
-   //stack->display_stack();
-   int element = stack->pop();
-   std::cout <<"\n Pop Stack: "<< element << std::endl;
-   //stack->display_stack();
+    switch (choice) {
+    case 1:
+        int lchoice;
+        
+        list_from_array->display();
+        std::cout << "Choose operation - (1) Insert After node (2) Access (3) Append: ";
+        std::cin >> lchoice;
+        if (lchoice == 1) {
+            std::cout << "Enter index and data to insert after: ";
+            std::cin >> idx >> data;
+            list_from_array->insert_after(idx, data);
+            list_from_array->display();
+        }
+        else if (lchoice == 2) {
+            std::cout << "Enter index to access : ";
+            std::cin >> idx;
+            std::cout << list_from_array->access(idx) << std::endl;
+        }
+        else if (lchoice == 3) {
+            std::cout << "Enter data to append: ";
+            std::cin >> data;
+            list_from_array->append(data);
+            list_from_array->display();
+        }
+        else std::cout << "[ERROR] Invalid Entry! " << std::endl;
 
-   Queue* queue = generate_queue(arr, n);
-   queue->display_queue();
-   std::cout << "Pop queue " << queue->pop() << std::endl;
+        break;
 
-    delete list_from_array;
-    list_from_array = nullptr;
+    case 2:
+        int schoice;
+        
+        stack->display_stack();
+        std::cout << "Choose operation - (1) Push (2) Pop ";
+        std::cin >> schoice;
+        if (schoice == 1) {
+            std::cout << "Enter data to push: ";
+            std::cin >> data;
+            stack->push(data);
+            stack->display_stack();
+        }
+        else if (schoice == 2) {
+            std::cout << "Popped element: " << stack->pop()<< std::endl;
+            stack->display_stack();
+        }
+        else std::cout << "[ERROR] Invalid Entry! " << std::endl;
+        break;
+
+    case 3:
+        int qchoice;
+        
+        queue->display_queue();
+        std::cout << "Choose operation - (1) Push (2) Pop ";
+        std::cin >> qchoice;
+        if (qchoice == 1) {
+            std::cout << "Enter data to push: ";
+            std::cin >> data;
+            queue->push(data);
+            queue->display_queue();
+        }
+        else if (qchoice == 2) {
+            std::cout << "Popped element: " << queue->pop() << std::endl;
+            queue->display_queue();
+        }
+        else std::cout << "[ERROR] Invalid Entry! " << std::endl;
+
+        break;
+
+    default:
+        std::cout << "[INFO] Default Array \n";
+        for (int i = 0; i < n; i++) {
+            std::cout << arr[i] << " ";
+        }
+
+
+
+    }
+    
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

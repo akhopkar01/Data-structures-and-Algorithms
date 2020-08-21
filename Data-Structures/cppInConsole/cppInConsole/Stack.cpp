@@ -21,7 +21,9 @@ bool Stack::is_empty()
 
 void Stack::display_stack()
 {
+	std::cout << "---Stack Bottom---\n";
 	for (const int& element : *vec) {
-		std::cout << element << std::endl;
+		std::cout << "---"<<element << "---\n";
 	}
+	std::cout << "---Stack top---\n" << std::endl;
 }

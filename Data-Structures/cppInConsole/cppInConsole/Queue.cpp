@@ -20,7 +20,9 @@ bool Queue::is_empty()
 
 void Queue::display_queue()
 {
+	std::cout << "---Queue bottom---\n";
 	for (const int& element : vec) {
-		std::cout << "\n" << element << "\n";
+		std::cout << "---" << element << "---\n";
 	}
+	std::cout << "---Queue Top---\n" << std::endl;
 }

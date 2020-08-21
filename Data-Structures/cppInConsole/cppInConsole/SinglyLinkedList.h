@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+
 struct node
 {
 	int data;
@@ -9,12 +11,12 @@ class SinglyLinkedList
 private:
 	node* head{nullptr};
 	node* tail{nullptr};
+	
 public:
 	void append(int);
 	void display();
 	int access(int);
 	void insert_after(int, int);
-
 
 };
 
